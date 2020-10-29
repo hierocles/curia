@@ -9,6 +9,9 @@
             "email": "dylan.hierocles@gmail.com"
         }
     ],
+    "config": {
+        "vendor-dir": "inc/plugins/curia/vendor"
+    },
     "require": {
         "julien-boudry/condorcet": "^2.2"
     },
