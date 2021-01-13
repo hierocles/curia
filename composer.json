@@ -5,15 +5,30 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Dylan H",
-            "email": "dylan.hierocles@gmail.com"
+            "name": "Dylan H"
         }
     ],
     "config": {
         "vendor-dir": "inc/plugins/curia/vendor"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "geoffreybr/d3-parliament",
+                "version": "1.0.1",
+                "source": {
+                    "url": "https://github.com/geoffreybr/d3-parliament.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
     "require": {
-        "julien-boudry/condorcet": "^2.2"
+        "julien-boudry/condorcet": "^2.2",
+        "geoffreybr/d3-parliament": "^1.0.1",
+        "mbostock/d3": "^3.5"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5"
