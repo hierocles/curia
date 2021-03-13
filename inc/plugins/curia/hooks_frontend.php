@@ -18,29 +18,92 @@ function misc_start(): void
     global $mybb, $lang, $db, $plugins, $headerinclude, $header,
     $theme, $footer;
 
-
     /**
-     * Planned pages:
-     * USERS
-     * - curia_view_election
-     * - curia_build_ballot
-     * - curia_submit_ballot
-     * - curia_edit_ballot
+     * Planned pages/actions:
      * ADMIN
      * - curia_create_election
+     * -- &run=create
      * - curia_edit_election
-     * - curia_archive_election
-     * - curia_delete_election
-     * - curia_run_election
+     * -- &run=edit
+     * -- &run=archive
+     * -- &run=delete
+     * -- &run=count
+     * -- &run=start
+     * USERS
+     * - curia_hub
+     * - curia_view_election
+     * -- &election_id=(int)
+     * - curia_build_ballot
+     * -- $election_id=(int)
+     * -- &run=build
+     * - curia_edit_ballot
+     * -- &ballot_id=(int)
+     * -- &run=edit
      */
 
     $pages = [
-        'page_name' => [
-            'parents' => [
-                'parent_page_name'
-            ],
-            'permission' => 'function returns false to deny access',
-            'controller' => 'function returning eval($page)',
+        'curia_create_election' => [
+            'permissions' => function (): bool {
+                return \is_member(\curia\getCsvSettingValues('admin_group'));
+            },
+            'controller' => function (array $globals) {
+                extract($globals);
+                if ($mybb->input['run'] == 'create') {
+                    // create
+                } else {
+                    // form
+                }
+                eval('$page = "' . \curia\tpl('create_election') . '";');
+                return $page;
+            }
+        ],
+        'curia_edit_election' => [
+            'permissions' => function (): bool {
+                return \is_member(\curia\getCsvSettingValues('admin_group'));
+            },
+            'controller' => function (array $globals) {
+                extract($globals);
+
+                switch ($mybb->input['run']) {
+                    case 'edit':
+                        break;
+                    case 'archive':
+                        break;
+                    case 'delete':
+                        break;
+                    case 'start':
+                        break;
+                    case 'count':
+                        break;
+                    default:
+                        break;
+                }
+
+                eval('$page = "' . \curia\tpl('edit_election') . '";');
+                return $page;
+            }
+        ],
+        'curia_hub' => [
+            'permissions' => function (): bool {
+                return \is_member(\curia\getCsvSettingValues('can_view'));
+            },
+            'controller' => function (array $globals) {
+                extract($globals);
+                // grab all current elections
+                eval('$page = "' . \curia\tpl('hub') . '";');
+                return $page;
+            }
+        ],
+        'curia_view_election' => [
+            'permissions' => function (): bool {
+                return \is_member(\curia\getCsvSettingValues('can_view'));
+            },
+            'controller' => function (array $globals) {
+                extract($globals);
+                // Get election
+                eval('$page = "' . \curia\tpl('view_election') . '";');
+                return $page;
+            }
         ]
     ];
 

@@ -1,0 +1,14 @@
+.curia-grid-container {
+    height: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 0.4fr 1.6fr;
+    grid-template-rows: 1fr;
+    gap: 0px 10px;
+    grid-template-areas:
+        "curia-hub-nav curia-hub-body";
+}
+
+.curia-hub-nav { grid-area: curia-hub-nav; }
+
+.curia-hub-body { grid-area: curia-hub-body; }

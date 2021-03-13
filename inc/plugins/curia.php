@@ -93,12 +93,12 @@ function curia_uninstall()
     $PL->settings_delete('curia');
 
     // datacache
-    $cache->delete('mint');
+    $cache->delete('curia');
 
     // database tables
     \curia\dropTables([
-        \mint\DbRepository\Elections::class,
-        \mint\DbRepository\Ballots::class
+        \curia\DbRepository\Elections::class,
+        \curia\DbRepository\Ballots::class
     ], true, true);
 
     // tasks
@@ -128,6 +128,16 @@ function curia_activate()
         'can_delete' => [
             'title' => $lang->curia_admin_candeletetitle,
             'description' => $lang->curia_admin_candeletedesc
+        ],
+        'can_vote' => [
+            'title' => $lang->curia_admin_canvote,
+            'description' => $lang->curia_admin_canvotedesc,
+            'options' => 'groupselect'
+        ],
+        'canv_view' => [
+            'title' => $lang->curia_admin_canview,
+            'description' => $lang->curia_admin_canviewdesc,
+            'options' => 'groupselect'
         ]
     ];
     $PL->settings(
@@ -168,7 +178,7 @@ function curia_deactivate()
  *
  * @return bool
  */
-function mint_is_installed()
+function curia_is_installed()
 {
     global $db;
 

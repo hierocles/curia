@@ -2,7 +2,7 @@
 
 namespace curia\DbRepository;
 
-class Elections extends \curia\DbRepository
+class Elections extends \curia\DbEntityRepository
 {
     public const TABLE_NAME = 'curia_elections';
     public const COLUMNS = [

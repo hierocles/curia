@@ -60,7 +60,7 @@ function getRegisteredSettings(): array
 
 function loadModuleLanguageFile(string $moduleName, string $section): void
 {
-    \mint\loadExternalLanguageFile('inc/plugins/curia/modules/' . $moduleName . '/languages', $section);
+    \curia\loadExternalLanguageFile('inc/plugins/curia/modules/' . $moduleName . '/languages', $section);
 }
 
 function runScheduler(): void
