@@ -34,8 +34,7 @@ class Ballots extends \curia\DbEntityRepository
             'type' => 'text'
         ],
         'anonymous' => [
-            'type' => 'bool',
-            'notNull' => true
+            'type' => 'bool'
         ]
     ];
 

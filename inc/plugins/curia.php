@@ -18,6 +18,14 @@ spl_autoload_register(function ($path) {
     }
 });
 
+define('curia\DEVELOPMENT_MODE', 0);
+
+\curia\loadModules(
+    \curia\getModuleNames()
+);
+
+\curia\addHooksNamespace('curia\Hooks');
+
 /**
  * Load plugin metadata
  *
@@ -132,12 +140,12 @@ function curia_activate()
         'can_vote' => [
             'title' => $lang->curia_admin_canvote,
             'description' => $lang->curia_admin_canvotedesc,
-            'options' => 'groupselect'
+            'optionscode' => 'groupselect'
         ],
         'canv_view' => [
             'title' => $lang->curia_admin_canview,
             'description' => $lang->curia_admin_canviewdesc,
-            'options' => 'groupselect'
+            'optionscode' => 'groupselect'
         ]
     ];
     $PL->settings(

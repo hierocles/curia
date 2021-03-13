@@ -12,7 +12,7 @@ class Elections extends \curia\DbEntityRepository
         ],
         'methodology' => [
             'type' => 'varchar',
-            'legnth' => 255
+            'length' => 255
         ],
         'active' => [
             'type' => 'bool',

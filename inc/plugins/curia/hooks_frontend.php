@@ -8,8 +8,13 @@ function global_start(): void
 
     $lang->load('curia');
 
-    if (strpos($mybb->get_input('action'), 'curia_') === 0) {
-        // load curia templates
+    if(\THIS_SCRIPT == 'misc.php') {
+        if (strpos($mybb->get_input('action'), 'curia_') === 0) {
+            \curia\loadTemplates([
+                'hub',
+                'view_election'
+            ]);
+        }
     }
 }
 
@@ -43,6 +48,9 @@ function misc_start(): void
 
     $pages = [
         'curia_create_election' => [
+            'parents' => [
+                'curia_hub'
+            ],
             'permissions' => function (): bool {
                 return \is_member(\curia\getCsvSettingValues('admin_group'));
             },
@@ -58,6 +66,9 @@ function misc_start(): void
             }
         ],
         'curia_edit_election' => [
+            'parents' => [
+                'curia_hub'
+            ],
             'permissions' => function (): bool {
                 return \is_member(\curia\getCsvSettingValues('admin_group'));
             },
@@ -95,6 +106,9 @@ function misc_start(): void
             }
         ],
         'curia_view_election' => [
+            'parents' => [
+                'curia_hub'
+            ],
             'permissions' => function (): bool {
                 return \is_member(\curia\getCsvSettingValues('can_view'));
             },
@@ -124,11 +138,11 @@ function misc_start(): void
         // Add parent breadcrumbs
         if (!empty($page['parents'])) {
             foreach ($page['parents'] as $parent) {
-                \add_breadcrumb($lang->{'curia_page_' . $parent}, 'misc.php?action=' . $parent);
+                \add_breadcrumb($lang->{$parent}, 'misc.php?action=' . $parent);
             }
         }
 
-        \add_breadcrumb($lang->{'curia_page_' . $pageName});
+        \add_breadcrumb($lang->{$pageName});
 
         $globals = compact([
             'mybb',
