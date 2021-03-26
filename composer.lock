@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "665e2568965ea57b7803ed84232ff4c0",
+    "content-hash": "2e33d05ac25f58b1cd519afbc66764e8",
     "packages": [
         {
             "name": "geoffreybr/d3-parliament",
@@ -1125,9 +1125,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],

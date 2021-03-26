@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable PSR1.Files.SideEffects.FoundWithSymbols
 
 require MYBB_ROOT . 'inc/plugins/curia/common.php';
 require MYBB_ROOT . 'inc/plugins/curia/core.php';

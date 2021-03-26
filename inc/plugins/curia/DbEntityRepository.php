@@ -151,14 +151,16 @@ abstract class DbEntityRepository
 
                             $foreignColumns = array_map(
                                 function (string $value) use ($tableAlias, $columnName) {
-                                    return $tableAlias . '.' . trim($value) . ' AS ' . str_replace('_id', null, $columnName) . '_' . $value;
+                                    return $tableAlias . '.' . trim($value) . ' AS '
+                                        . str_replace('_id', null, $columnName) . '_' . $value;
                                 },
                                 $foreignTableColumns[ $foreignKey['table'] ]
                             );
 
                             $columns = array_merge($columns, $foreignColumns);
 
-                            $tables[] = 'LEFT JOIN ' . TABLE_PREFIX . $foreignKey['table'] . ' ' . $tableAlias . ' ON t1.' . $columnName . ' = ' . $tableAlias . '.' . $foreignKey['column'];
+                            $tables[] = 'LEFT JOIN ' . TABLE_PREFIX . $foreignKey['table'] . ' ' . $tableAlias
+                                . ' ON t1.' . $columnName . ' = ' . $tableAlias . '.' . $foreignKey['column'];
 
                             $tableIndex++;
                         }

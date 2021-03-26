@@ -1,15 +1,26 @@
 {
     "name": "dylan/curia",
-    "description": "An MyBB election management plugin",
+    "description": "A MyBB election management plugin",
     "type": "project",
     "license": "MIT",
+    "keywords": ["mybb", "mybb-extension", "elections", "CondorcetPHP"],
+    "readme": "README.md",
     "authors": [
         {
-            "name": "Dylan H"
+            "name": "Dylan H.",
+            "homepage": "https://hierocles.github.com",
+            "role": "Developer"
+        }
+    ],
+    "funding": [
+        {
+            "type": "ko-fi",
+            "url": "https://ko-fi.com/hierocles"
         }
     ],
     "config": {
-        "vendor-dir": "inc/plugins/curia/vendor"
+        "vendor-dir": "inc/plugins/curia/vendor",
+        "sort-packages": true
     },
     "repositories": [
         {
@@ -26,11 +37,13 @@
         }
     ],
     "require": {
-        "julien-boudry/condorcet": "^2.2",
         "geoffreybr/d3-parliament": "^1.0.1",
+        "julien-boudry/condorcet": "^2.2",
         "mbostock/d3": "^3.5"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

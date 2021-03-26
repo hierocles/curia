@@ -8,11 +8,13 @@ function global_start(): void
 
     $lang->load('curia');
 
-    if(\THIS_SCRIPT == 'misc.php') {
+    if (\THIS_SCRIPT == 'misc.php') {
         if (strpos($mybb->get_input('action'), 'curia_') === 0) {
             \curia\loadTemplates([
                 'hub',
-                'view_election'
+                'create_election',
+                'create_election_message',
+                'create_election_form'
             ]);
         }
     }
@@ -57,9 +59,10 @@ function misc_start(): void
             'controller' => function (array $globals) {
                 extract($globals);
                 if ($mybb->input['run'] == 'create') {
-                    // create
+                    $message = 'create function';
+                    eval('$create_election_content = "' . \curia\tpl('create_election_message') . '";');
                 } else {
-                    // form
+                    eval('$create_election_content = "' . \curia\tpl('create_election_form') . '";');
                 }
                 eval('$page = "' . \curia\tpl('create_election') . '";');
                 return $page;
